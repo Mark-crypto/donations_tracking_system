@@ -1,0 +1,164 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f8ff;
+}
+header {
+  width: 100%;
+  background-color: #00308f;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+header .head-text {
+  display: flex;
+}
+header h3 {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+header a {
+  float: right;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+.body-img {
+  width: 100%;
+  height: 400px;
+  padding-top: 1px;
+}
+#btns {
+  padding-top: 10%;
+  padding-left: 10%;
+}
+#top-btn {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 30px;
+}
+#bottom-btn {
+  display: flex;
+  flex-direction: row;
+}
+.viewMap {
+  padding-right: 20px;
+}
+.addUsers {
+  padding-right: 20px;
+}
+.viewMap button:hover {
+  background-color: #8db600;
+}
+.viewMap button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0b85e2;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.enterData button:hover {
+  background-color: #8db600;
+}
+.enterData button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #7cb9e8;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.addUsers button:hover {
+  background-color: #8db600;
+}
+.addUsers button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #7cb9e8;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.viewRecepients button:hover {
+  background-color: #8db600;
+}
+.viewRecepients button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #7cb9e8;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+#last-btn {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.reports button:hover {
+  background-color: #8db600;
+}
+.reports button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #7cb9e8;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.logs {
+  padding-left: 20px;
+}
+.logs button {
+  height: 80px;
+  width: 140px;
+  border-radius: 8px;
+  border: none;
+  background-color: #7cb9e8;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.logs button:hover {
+  background-color: #8db600;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #00308f;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+#logout {
+  height: 30px;
+  width: 80px;
+  color: white;
+  background-color: black;
+  border-radius: 8px;
+  font-weight: bolder;
+}
+.footer {
+  padding-top: 10px;
+}
+
+.footer span {
+  font-size: larger;
+}

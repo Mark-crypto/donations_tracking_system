@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+               #logOrder {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#logOrder td, #logOrder th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#logOrder tr:nth-child(even){background-color: #f2f2f2;}
+
+#logOrder tr:hover {background-color: #ddd;}
+
+#logOrder th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: green;text-align:center;text-decoration:underline">LOGS ON DONATIONS </h1>
+    <a href="/logs/export"><button style="height: 40px; width:180px; background-color:#04AA6D; border: none; border-radius: 8px; color: white; font-weight: bold;">Download Logs</button></a><br><br>
+
+    <% if (action == 'add') { %>
+     
+        <% } else{ %>
+            <table id="logOrder">
+                
+                    <tr>
+                        <th>Action</th>
+                        <th>Timestamp</th>
+                        <th>User</th>
+                        
+                    </tr>
+                <% if (orderData.length> 0) { 
+                    orderData.forEach(data => {
+                    
+                    %>
+                    <tr >
+                        <td><%= data.action%></td>
+                        <td><%= data.time_stamp%></td>
+                        <td><%= data.user%></td>
+                    </tr>
+                    <%
+                    });
+                 } else{ %>
+                    <tr><td>No Data found</td></tr>
+                <% } %>
+    
+            </table>
+        <%}%>
+</body>
+</html>

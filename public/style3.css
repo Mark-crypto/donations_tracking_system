@@ -1,0 +1,177 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    width: 100%;
+    background-color: #146014;
+    height: 70px;
+    
+}
+header span{
+    padding-left: 40%;
+    color: white;
+    font-size: 50px;
+}
+header a{
+    float: right;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+#btns{
+    padding-top: 10%;
+    padding-left: 40%;
+}
+#top-btn{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+}
+#bottom-btn{
+    display: flex;
+    flex-direction: row;
+}
+.viewMap{
+    padding-right: 20px;
+}
+.viewData{
+    padding-right: 20px;
+}
+
+.reports{
+    padding-right: 20px;
+}
+
+.viewMap button:hover{
+    background-color: #8db600;
+}
+.viewMap button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.viewData button:hover{
+    background-color: #8db600;
+}
+.viewData button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+.viewDono{
+    padding-right: 20px;
+}
+.viewDono button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+.viewDono button:hover{
+    background-color: #8db600;
+}
+.reports button:hover{
+    background-color: #8db600;
+}
+.reports button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+.addRecepients button:hover{
+    background-color: #8db600;
+}
+.addRecepients button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#last-btn{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.qr button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.qr button:hover{
+    background-color: #8db600;
+}
+.logs{
+    padding-left: 20px;
+}
+.logs button{
+    height: 80px;
+    width: 140px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4cbb17;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+.logs button:hover{
+    background-color: #8db600
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #146014;
+    height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+#logout{
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    font-weight: bolder;
+}
+.footer{
+    padding-top: 10px;
+}
+
+.footer span{
+    font-size: larger;
+}

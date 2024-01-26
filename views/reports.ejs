@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        #bar1{
+            height: 250px;
+            width: 600px;
+            padding-bottom: 60px;
+        }
+        #line1{
+            height: 250px;
+            width: 600px;
+            padding-bottom: 60px;
+        }
+        #pie1{
+            height: 250px;
+            width: 600px;
+        }
+        #doughnut1{
+            height: 250px;
+            width: 600px;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: green;text-align:center;text-decoration:underline">REPORTS </h1>
+
+    <div class="container">
+        
+        <div id="bar1">
+            <h3 style="color: green;text-align:center;text-decoration:underline">Family Size vs Donations Received</h3>
+            <canvas id="myChart" ></canvas>
+        </div>
+        
+        <div id="line1">
+            <h3 style="color: green;text-align:center;text-decoration:underline">Donations vs Time of the Year</h3>
+            <canvas id="chart" ></canvas>
+        </div>
+        
+        <div id="pie1">
+            <h3 style="padding-top: 80px; color: green;text-align:center;text-decoration:underline">Organizations vs Amount Distributed</h3>
+            <canvas id="pie-chart"  ></canvas>
+        </div>
+        
+        <div id="doughnut1">
+            <h3 style="padding-top: 80px; color: green;text-align:center;text-decoration:underline">Regions vs Donations Received</h3>
+            <canvas id="doughnut-chart"  ></canvas>
+        </div>
+    </div>
+    
+    <% if (action == 'add') { %>
+     
+        <% } else{ %>
+            <table id="table" hidden>
+                
+                    <tr>
+                        <th>Number Issued</th>
+                        <th>Family Size</th>
+                        
+                    </tr>
+                <% if (barData.length> 0) { 
+                    barData.forEach(data => {
+                    
+                    %>
+                    <tr id="table">
+                        <td id="family"><%= data.totalNo %></td>
+                        <td id="numberReceived"><%= data.familySize %></td>
+                    </tr>
+                    <%
+                    });
+                 } else{ %>
+                    <tr><td>No Data found</td></tr>
+                <% } %>
+    
+            </table>
+        <% } %>
+
+
+<script>
+    const xlabels = ['7 members','2 members','2 members','10 members','6 members','1 member','6 members','1 member','2 members','2 members']
+    const ylabels = [9,4,5,16,7,1,8,2,4,4]
+
+    
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: xlabels,
+        datasets: [{
+            label: 'Donations received by families',
+            data: ylabels,
+            backgroundColor: [
+                'rgba(255, 99, 132)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+<script>
+const cty = document.getElementById('chart').getContext('2d');
+
+const chart = new Chart(cty, {
+    type: 'line',
+    data: {
+        labels: ['Jan','Feb','March','Nov','April','Dec','Oct','Sep'],
+        datasets: [{
+            label: 'Donations received during different months',
+            data: [4,3,6,5,10,8,6,11],
+            backgroundColor: [
+                'rgb(255, 99, 132)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<script>
+    const ctz = document.getElementById('pie-chart').getContext('2d');
+    const alabels = [1000,4500,5000,500,7000]
+    const blabels = ['Red cross','USAID','Food Bank', 'Anonymous', 'Government']
+const chart2 = new Chart(ctz, {
+    type: 'pie',
+    data: {
+        labels: blabels,
+        datasets: [{
+            label: 'Donations issued by organizations',
+            data: alabels,
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 206, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(255, 159, 64)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+}); 
+</script>
+
+<script>
+    const cta = document.getElementById('doughnut-chart').getContext('2d');
+const clabels =[4,3,6,5,10,8,6,11]
+const dlabels = ['North Eastern','Rift Valley','Coastal','Nyanza','Western','Central','Nairobi','Eastern']
+const chart3 = new Chart(cta, {
+    type: 'doughnut',
+    data: {
+        labels: dlabels,
+        datasets: [{
+            label: 'Donations received by regions',
+            data: clabels,
+            backgroundColor: [
+                    'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 206, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(255, 159, 64)',
+                'rgb(250,100,60)',
+                'rgb(60,250,100)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 0.5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+}); 
+</script>
+</body>
+</html>
