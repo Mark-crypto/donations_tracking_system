@@ -10,13 +10,14 @@ import QrCode from "./components/QrCode.jsx";
 import Recepients from "./components/Recepients.jsx";
 import Registration from "./components/Registration.jsx";
 import Reports from "./components/Reports.jsx";
-import Map from "./components/Map.jsx";
+import TrackingMap from "./components/TrackingMap.jsx";
+import Error from "./components/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <p>An error occurred</p>,
+    errorElement: <Error />,
   },
   {
     path: "/donations",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/map",
-    element: <Map />,
+    element: <TrackingMap />,
   },
   {
     path: "/QrCode",

@@ -1,18 +1,57 @@
-import Footer from "./sub-components/Footer";
-import Navbar from "./sub-components/Navbar";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import "../styles/Home.css";
+import { FcDonate } from "react-icons/fc";
+import { GrSecure } from "react-icons/gr";
+import { FaMapMarkedAlt } from "react-icons/fa";
+import { MdQrCodeScanner } from "react-icons/md";
+import { TbReportAnalytics } from "react-icons/tb";
+import { GiReceiveMoney } from "react-icons/gi";
 
 const Home = () => {
   return (
     <>
-      <p>Breadcrumb:admin dashboard</p>
+      {/* <Navbar /> */}
+      <Breadcrumb>
+        <Breadcrumb.Item active style={{ color: "white" }}>
+          Admin Dashboard
+        </Breadcrumb.Item>
+      </Breadcrumb>
+
       <div className="menu">
-        <button>Icon Donations</button>
-        <button>Icon Logs</button>
-        <button>Icon Map</button>
-        <button>Icon QrCode</button>
-        <button>Icon Reports</button>
-        <button>Icon QrCode</button>
-        <button>Icon Recepients</button>
+        <div className="menu-1">
+          <a href="/donations">
+            <button>
+              <FcDonate /> Donations
+            </button>
+          </a>
+          <a href="/logs">
+            <button>
+              <GrSecure /> Logs
+            </button>
+          </a>
+          <a href="/map">
+            <button>
+              <FaMapMarkedAlt /> Map
+            </button>
+          </a>
+        </div>
+        <div className="menu-2">
+          <a href="/QrCode">
+            <button>
+              <MdQrCodeScanner /> QrCode
+            </button>
+          </a>
+          <a href="/reports">
+            <button>
+              <TbReportAnalytics /> Reports
+            </button>
+          </a>
+          <a href="/recepients">
+            <button>
+              <GiReceiveMoney /> Recepients
+            </button>
+          </a>
+        </div>
       </div>
     </>
   );

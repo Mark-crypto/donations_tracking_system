@@ -1,14 +1,16 @@
 import React from "react";
+import "../../styles/Nav.css";
+import { LuLogOut } from "react-icons/lu";
 
-const Navbar = () => {
+const NavbarTop = () => {
   return (
     <>
-      <nav>
-        <img src="" alt="Logo" />
-        <h4>Tracking Aid </h4>
-      </nav>
+      <div className="nav">
+        Tracking Aid
+        <LuLogOut />
+      </div>
     </>
   );
 };
 
-export default Navbar;
+export default NavbarTop;

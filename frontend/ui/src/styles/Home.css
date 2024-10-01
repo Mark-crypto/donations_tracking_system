@@ -1,0 +1,28 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  padding: 10px 20px;
+  border: 1px solid #b2b2b2;
+  outline: none;
+  border-radius: 0.25em;
+  color: #7cfc00;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  background-color: #0047ab;
+  transition: 0.3s background-color;
+}
+
+button:hover {
+  background-color: #045dd9;
+}
+
+.menu-1 {
+}
+.menu-2 {
+}
