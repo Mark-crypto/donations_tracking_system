@@ -3,26 +3,43 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  gap: 10px;
 }
-button {
+.menu button {
   padding: 10px 20px;
-  border: 1px solid #b2b2b2;
+  border: 2px solid #7cfc00;
   outline: none;
-  border-radius: 0.25em;
-  color: #7cfc00;
-  font-size: 15px;
+
+  color: white;
+  font-weight: bold;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 10px;
   background-color: #0047ab;
   transition: 0.3s background-color;
+  width: 300px;
+  height: 150px;
 }
 
 button:hover {
   background-color: #045dd9;
 }
-
-.menu-1 {
+.menu-title {
+  text-align: center;
+  margin-top: 60px;
+  text-transform: uppercase;
 }
-.menu-2 {
+.menu-1 a button {
+  margin: 10px;
+  border-radius: 10px;
+}
+.menu-2 a button {
+  margin: 10px;
+  border-radius: 10px;
+}
+.menu-icon {
+  font-size: 40px;
+  padding-bottom: 10px;
+  color: #7cfc00;
 }

@@ -1,3 +1,13 @@
 .nav {
   background: #0047ab;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav h4 {
+  padding-left: 10px;
+}
+.nav h5 {
+  padding-right: 10px;
 }
