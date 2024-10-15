@@ -1,21 +1,20 @@
 import express from "express";
-import "dotenv/config";
-import users from "./users.js";
+import dotenv from "dotenv";
+dotenv.config();
+import cors from "cors";
+import router from "./routes/index.route";
+// import connection from "./database";
 
 const app = express();
 const PORT = process.env.PORT;
 
 //middlewares
-//app.set(express.json());
-app.get("/", () => {
-  res.send("API is working properly");
-});
-app.get("/api", (req, res) => {
-  res.json({ students: ["one", "two", "three", "four", "five"] });
-});
-app.get("/api/users", (req, res) => {
-  res.send(users);
-});
+app.use(express.json());
+app.use(cors());
+
+//routes
+app.use("/api", router);
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });

@@ -1,0 +1,9 @@
+.reg-form {
+  margin: 40px 300px 40px 300px;
+}
+.reg-form Button {
+  width: 100%;
+  border: 1px solid #7cfc00;
+  background-color: #0047ab;
+  transition: 0.3s background-color;
+}
