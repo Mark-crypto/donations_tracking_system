@@ -1,4 +1,4 @@
-import connection from "../database";
+import connection from "../database.js";
 import bcrypt from "bcryptjs";
 
 export const verifyLogin = (req, res) => {

@@ -5,7 +5,7 @@ import {
   storeRecepients,
   updateRecepients,
   deleteRecepients,
-} from "../controllers/recepient";
+} from "../controllers/recepient.js";
 
 const router = Router();
 

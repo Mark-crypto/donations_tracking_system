@@ -12,12 +12,18 @@ const connection = mysql.createPool({
   maxIdle: 10,
 });
 
-connection.connect((error) => {
-  if (error) {
-    return console.log(`An error has occurred: ${error}`);
-  } else {
-    console.log("Database has connected successfully");
-  }
+const conn = mysql.createConnection({
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
+// connection.connect((error) => {
+//   if (error) {
+//     return console.log(`An error has occurred: ${error}`);
+//   } else {
+//     console.log("Database has connected successfully");
+//   }
+// });
 
 export default connection;

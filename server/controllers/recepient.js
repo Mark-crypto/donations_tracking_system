@@ -1,10 +1,10 @@
-import connection from "../database";
+import connection from "../database.js";
 
 //Fetch all recepients
 export const getRecepients = (req, res) => {
   try {
-    const query = "SELECT * from recepient ORDER BY id desc";
-    connection.query(query, function (error, data) {
+    const query = "SELECT * from recepients ORDER BY recepient_ID desc";
+    connection.execute(query, function (error, data) {
       if (error)
         return res
           .status(500)
@@ -22,9 +22,9 @@ export const getRecepients = (req, res) => {
 export const getSingleRecepient = (req, res) => {
   const { id } = req.params;
   try {
-    const query = `SELECT * FROM recepient where id = "${id}"`;
+    const query = `SELECT * FROM recepients where recepient_ID = "${id}"`;
 
-    connection.query(query, (error, data) => {
+    connection.execute(query, (error, data) => {
       if (error)
         return res
           .status(500)
@@ -41,18 +41,18 @@ export const getSingleRecepient = (req, res) => {
 //Store recepient
 export const storeRecepients = (req, res) => {
   const {
-    firstName,
-    lastName,
-    national_Id,
-    orders,
-    totalNo,
-    familySize,
+    fName,
+    lName,
+    quantity,
+    familyType,
+    item_received,
     region,
+    issued_by,
   } = req.body;
   try {
-    connection.query(
-      `INSERT INTO recepient SET firstName =?,lastName = ?,national_Id = ?,orders = ?,totalNo = ?,familySize = ?,region = ?`,
-      [firstName, lastName, national_Id, orders, totalNo, familySize, region],
+    connection.execute(
+      `INSERT INTO recepients SET fName =?,lName = ?,quantity = ?,familyType = ?,item_received = ?,region = ?,issued_by = ?`,
+      [fName, lName, quantity, familyType, item_received, region, issued_by],
       (error) => {
         if (error)
           return res
@@ -72,26 +72,26 @@ export const storeRecepients = (req, res) => {
 export const updateRecepients = (req, res) => {
   const {
     id,
-    firstName,
-    lastName,
-    national_Id,
-    orders,
-    totalNo,
-    familySize,
+    fName,
+    lName,
+    quantity,
+    familyType,
+    item_received,
     region,
+    issued_by,
   } = req.body;
 
   try {
-    connection.query(
-      "UPDATE recepient SET firstName = ?,lastName = ?,national_Id = ?,orders = ?, totalNo = ?, familySize = ?,region = ? WHERE id= ?",
+    connection.execute(
+      "UPDATE recepients SET fName =?,lName = ?,quantity = ?,familyType = ?,item_received = ?,region = ?,issued_by = ? WHERE recepient_ID= ?",
       [
-        firstName,
-        lastName,
-        national_Id,
-        orders,
-        totalNo,
-        familySize,
+        fName,
+        lName,
+        quantity,
+        familyType,
+        item_received,
         region,
+        issued_by,
         id,
       ],
       (error) => {
@@ -113,8 +113,8 @@ export const updateRecepients = (req, res) => {
 export const deleteRecepients = (req, res) => {
   const { id } = req.params;
   try {
-    const query = `DELETE FROM recepient where id = "${id}"`;
-    connection.query(query, (error) => {
+    const query = `DELETE FROM recepients where recepient_ID = "${id}"`;
+    connection.execute(query, (error) => {
       if (error)
         return res
           .status(500)

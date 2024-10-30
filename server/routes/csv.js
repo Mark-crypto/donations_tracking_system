@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { recepientsCSV, donationsCSV, logsCSV } from "../controllers/csv";
+import { recepientsCSV, donationsCSV, logsCSV } from "../controllers/csv.js";
 
 const router = Router();
 

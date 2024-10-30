@@ -5,7 +5,7 @@ import {
   getSingleDonation,
   updateDonations,
   deleteDonations,
-} from "../controllers/donation";
+} from "../controllers/donation.js";
 
 const router = Router();
 
