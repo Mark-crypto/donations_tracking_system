@@ -71,7 +71,6 @@ export const storeRecepients = (req, res) => {
 //Update recepient
 export const updateRecepients = (req, res) => {
   const {
-    id,
     fName,
     lName,
     quantity,
@@ -80,7 +79,7 @@ export const updateRecepients = (req, res) => {
     region,
     issued_by,
   } = req.body;
-
+  const { id } = req.params;
   try {
     connection.execute(
       "UPDATE recepients SET fName =?,lName = ?,quantity = ?,familyType = ?,item_received = ?,region = ?,issued_by = ? WHERE recepient_ID= ?",

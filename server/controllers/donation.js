@@ -39,7 +39,8 @@ export const storeDonations = (req, res) => {
 };
 // Fetching single record
 export const getSingleDonation = (req, res) => {
-  const id = req.params;
+  const { id } = req.params;
+  console.log(id);
   const query = `SELECT * FROM donations where item_ID = "${id}"`;
   connection.execute(query, (error, data) => {
     if (error) {
@@ -50,7 +51,8 @@ export const getSingleDonation = (req, res) => {
 };
 //Updating records
 export const updateDonations = (req, res) => {
-  const { id, item, quantity, destination, driver } = req.body;
+  const { item, quantity, destination, driver } = req.body;
+  const { id } = req.params;
 
   connection.execute(
     "UPDATE donations SET item =?,quantity=?,destination=?,driver=? WHERE item_ID =?",
@@ -67,7 +69,7 @@ export const updateDonations = (req, res) => {
 };
 //Deleting records
 export const deleteDonations = (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const query = `DELETE FROM donations where item_ID = "${id}"`;
 
   connection.execute(query, (error) => {
@@ -93,4 +95,14 @@ export const deleteDonations = (req, res) => {
   END;
   //
   DELIMITER ;
+
+  CREATE TRIGGER set_default_user
+BEFORE INSERT ON your_table_name
+FOR EACH ROW
+BEGIN
+    IF NEW.your_column_name IS NULL THEN
+        SET NEW.your_column_name = USER();
+    END IF;
+END;
+
   */

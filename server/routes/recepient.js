@@ -9,9 +9,9 @@ import {
 
 const router = Router();
 
-router.get("/recepient", getRecepients);
-router.get("/recepient", getSingleRecepient);
-router.post("/recepient", storeRecepients);
-router.put("/recepient", updateRecepients);
-router.delete("/recepient", deleteRecepients);
+router.get("/recepients", getRecepients);
+router.get("/recepients/:id", getSingleRecepient);
+router.post("/recepients", storeRecepients);
+router.put("/recepients/:id", updateRecepients);
+router.delete("/recepients/:id", deleteRecepients);
 export default router;

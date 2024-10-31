@@ -1,5 +1,23 @@
 import connection from "../database.js";
 
+export const getDriver = (req, res) => {
+  try {
+    const query = "SELECT * from drivers ORDER BY driver_ID desc";
+    connection.execute(query, function (error, data) {
+      if (error) {
+        return res
+          .status(500)
+          .send({ error: "Internal server error has occurred" });
+      }
+      return res.status(200).send({ data });
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ error: "Internal server error has occurred" });
+  }
+};
+
 export const storeDriver = (req, res) => {
   const {
     fname,
@@ -35,6 +53,42 @@ export const storeDriver = (req, res) => {
     );
   } catch (error) {
     return res.status(500).send({ error: "Internal server error occurred" });
+  }
+};
+
+export const getVehicle = (req, res) => {
+  try {
+    const query = "SELECT * from vehicles ORDER BY vehicle_ID desc";
+    connection.execute(query, function (error, data) {
+      if (error) {
+        return res
+          .status(500)
+          .send({ error: "Internal server error has occurred" });
+      }
+      return res.status(200).send({ data });
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ error: "Internal server error has occurred" });
+  }
+};
+
+export const getCounty = (req, res) => {
+  try {
+    const query = "SELECT * from county ORDER BY county_ID desc";
+    connection.execute(query, function (error, data) {
+      if (error) {
+        return res
+          .status(500)
+          .send({ error: "Internal server error has occurred" });
+      }
+      return res.status(200).send({ data });
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ error: "Internal server error has occurred" });
   }
 };
 

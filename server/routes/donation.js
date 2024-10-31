@@ -10,9 +10,9 @@ import {
 const router = Router();
 
 router.get("/donations", getDonations);
-router.get("/donations", getSingleDonation);
+router.get("/donations/:id", getSingleDonation);
 router.post("/donations", storeDonations);
-router.put("/donations", updateDonations);
-router.delete("/donations", deleteDonations);
+router.put("/donations/:id", updateDonations);
+router.delete("/donations/:id", deleteDonations);
 
 export default router;
