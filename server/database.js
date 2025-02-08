@@ -18,6 +18,7 @@ const conn = mysql.createConnection({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
 });
+if (conn) console.log("Database has connected successfully");
 // connection.connect((error) => {
 //   if (error) {
 //     return console.log(`An error has occurred: ${error}`);

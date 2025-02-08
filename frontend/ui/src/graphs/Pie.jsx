@@ -1,6 +1,16 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const Pie = () => {
+  const [variables, setVariables] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios("http://localhost:5000/api/report/pieChart");
+      setVariables(response.data.data);
+    };
+    fetchData();
+  });
   // Load the Visualization API and the corechart package.
   google.charts.load("current", { packages: ["corechart"] });
 
@@ -10,22 +20,27 @@ export const Pie = () => {
   // Callback that creates and populates a data table,
   // instantiates the pie chart, passes in the data and
   // draws it.
+  var items = variables.map((variable) => variable.item_received);
+  var newItems = items.slice(0, 5);
+  var quantity = variables.map((variable) => {
+    return parseInt(variable.quantity.split(" ")[0]);
+  });
+  var newQuantity = quantity.slice(0, 5);
+
   function drawChart() {
     // Create the data table.
     var data = new google.visualization.DataTable();
-    data.addColumn("string", "Topping");
-    data.addColumn("number", "Slices");
-    data.addRows([
-      ["Mushrooms", 3],
-      ["Onions", 1],
-      ["Olives", 1],
-      ["Zucchini", 1],
-      ["Pepperoni", 2],
-    ]);
+    // data.addColumn("string", "Topping");
+    data.addColumn("string", "Items");
+    data.addColumn("number", "Quantity");
+    var dataArray = newItems.map((item, index) => {
+      return [item, newQuantity[index]];
+    });
+    data.addRows(dataArray);
 
     // Set chart options
     var options = {
-      title: "How Much Pizza I Ate Last Night",
+      title: "Donation Items distributed to recipients",
       width: 400,
       height: 300,
     };

@@ -2,6 +2,9 @@ import React from "react";
 import "../styles/Login.css";
 import { useFormik } from "formik";
 import { loginValidation } from "../yup/loginValidation";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const formik = useFormik({
@@ -11,6 +14,27 @@ const Login = () => {
     },
     validationSchema: loginValidation,
   });
+  const submitForm = async () => {
+    if (!formik.values.email || !formik.values.password) {
+      return toast.error("Please fill all the fields");
+    }
+    if (formik.errors.email || formik.errors.password) {
+      return toast.error("Please fill all the fields");
+    }
+    console.log(formik.values);
+    const response = await axios.post(
+      "http://localhost:5000/api/login",
+      formik.values
+    );
+    // if(response.data.success){
+    //   localStorage.setItem("token",response.data.token)
+    //   return toast.success(response.data.message)
+    // }else{
+    //   return toast.error(response.data.message)
+    // }
+    toast.success(response.data.message);
+  };
+
   return (
     <>
       <div class="background">
@@ -18,6 +42,7 @@ const Login = () => {
         <div class="shape"></div>
       </div>
       <form className="form">
+        <ToastContainer />
         <h3>Login Here</h3>
         <label for="email">Email</label>
         <input
@@ -47,7 +72,9 @@ const Login = () => {
         ) : (
           ""
         )}
-        <button className="btn-login">Log In</button>
+        <button className="btn-login" onClick={submitForm}>
+          Log In
+        </button>
       </form>
     </>
   );

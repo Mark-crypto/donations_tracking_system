@@ -10,8 +10,8 @@ import {
 const router = Router();
 
 router.get("/driver", getDriver);
-router.get("/driver", getVehicle);
-router.get("/driver", getCounty);
+router.get("/vehicle", getVehicle);
+router.get("/county", getCounty);
 router.post("/driver", storeDriver);
 router.post("/vehicle", storeVehicle);
 router.post("/county", storeCounty);

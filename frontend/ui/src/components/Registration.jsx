@@ -5,6 +5,8 @@ import { useFormik } from "formik";
 import { registerValidation } from "../yup/registerValidation";
 import "../styles/Registration.css";
 import NavbarTop from "./sub-components/Navbar";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const Registration = () => {
   const formik = useFormik({
@@ -18,11 +20,41 @@ const Registration = () => {
     },
     validationSchema: registerValidation,
   });
+  const submitForm = async () => {
+    if (
+      !formik.values.fname ||
+      !formik.values.lname ||
+      !formik.values.email ||
+      !formik.values.role ||
+      !formik.values.password ||
+      !formik.values.confirmPassword
+    ) {
+      return toast.error("Please fill all the fields");
+    } else if (formik.values.password !== formik.values.confirmPassword) {
+      return toast.error("Passwords do not match");
+    } else if (
+      formik.errors.fname ||
+      formik.errors.lname ||
+      formik.errors.email ||
+      formik.errors.role ||
+      formik.errors.password ||
+      formik.errors.confirmPassword
+    ) {
+      return toast.error("Please fill all the fields correctly");
+    }
+
+    const response = await axios.post(
+      "http://localhost:5000/api/register",
+      formik.values
+    );
+    toast.success(response.data.message);
+  };
+
   return (
     <>
       <NavbarTop />
       <div className="reg-form">
-        <Form>
+        <Form onSubmit={submitForm}>
           <Form.Group className="mb-3">
             <Form.Label>First Name</Form.Label>
             <Form.Control

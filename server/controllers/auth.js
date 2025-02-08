@@ -24,6 +24,7 @@ export const verifyLogin = (req, res) => {
     }
   );
 };
+
 export const registerUser = (req, res) => {
   const { fname, lname, email, role, hashedPassword } = req.body;
   connection.query(
