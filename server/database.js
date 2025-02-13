@@ -18,13 +18,13 @@ const conn = mysql.createConnection({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
 });
-if (conn) console.log("Database has connected successfully");
-// connection.connect((error) => {
-//   if (error) {
-//     return console.log(`An error has occurred: ${error}`);
-//   } else {
-//     console.log("Database has connected successfully");
-//   }
-// });
+// if (conn) console.log("Database has connected successfully");
+conn.connect((error) => {
+  if (error) {
+    return console.log(`An error has occurred: ${error}`);
+  } else {
+    console.log("Database has connected successfully");
+  }
+});
 
 export default connection;
