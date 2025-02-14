@@ -2,99 +2,96 @@ import connection from "../database.js";
 
 //Fetching all records
 export const getDonations = async (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ error: "Unauthorized user" });
-  } else {
-    connection.execute("SELECT * FROM donations", (error, data) => {
-      if (error) {
-        return res
-          .status(500)
-          .send({ error: "Internal server error occurred" });
-      }
-      return res.status(200).send({ data: data });
-    });
-  }
+  connection.execute("SELECT * FROM donations", (error, data) => {
+    if (error) {
+      return res.status(500).send({ error: "Internal server error occurred" });
+    }
+    return res.status(200).send({ data: data });
+  });
+  // if (!req.user) {
+  //   return res.status(401).send({ error: "Unauthorized user" });
+  // } else {
+
+  // }
 };
 //Storing records to database
 export const storeDonations = (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ error: "Unauthorized user" });
-  } else {
-    const { item, quantity, destination, driver } = req.body;
-    try {
-      connection.execute(
-        "INSERT INTO donations SET item =?,quantity=?,destination=?,driver=?",
-        [item, quantity, destination, driver],
-        (error) => {
-          if (error) {
-            return res
-              .status(500)
-              .send({ error: "Internal server error occurred" });
-          }
+  const { item, quantity, destination, driver } = req.body;
+  try {
+    connection.execute(
+      "INSERT INTO donations SET item =?,quantity=?,destination=?,driver=?",
+      [item, quantity, destination, driver],
+      (error) => {
+        if (error) {
           return res
-            .status(201)
-            .send({ message: "Record inserted successfully" });
+            .status(500)
+            .send({ error: "Internal server error occurred" });
         }
-      );
-    } catch (error) {
-      return res.status(500).send({ error: "Internal server error occurred" });
-    }
+        return res
+          .status(201)
+          .send({ message: "Record inserted successfully" });
+      }
+    );
+  } catch (error) {
+    return res.status(500).send({ error: "Internal server error occurred" });
   }
+  // if (!req.user) {
+  //   return res.status(401).send({ error: "Unauthorized user" });
+  // } else {
+
+  // }
 };
 // Fetching single record
 export const getSingleDonation = (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ error: "Unauthorized user" });
-  } else {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    const query = `SELECT * FROM donations where item_ID = "${id}"`;
-    connection.execute(query, (error, data) => {
-      if (error) {
-        return res
-          .status(500)
-          .send({ error: "Internal server error occurred" });
-      }
-      return res.status(200).send({ data: data[0] });
-    });
-  }
+  const query = `SELECT * FROM donations where item_ID = "${id}"`;
+  connection.execute(query, (error, data) => {
+    if (error) {
+      return res.status(500).send({ error: "Internal server error occurred" });
+    }
+    return res.status(200).send({ data: data[0] });
+  });
+  // if (!req.user) {
+  //   return res.status(401).send({ error: "Unauthorized user" });
+  // } else {
+
+  // }
 };
 //Updating records
 export const updateDonations = (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ error: "Unauthorized user" });
-  } else {
-    const { id } = req.params;
-    const { item, quantity, destination, driver } = req.body;
-    const query = `UPDATE donations SET item = "${item}", quantity = "${quantity}", destination = "${destination}", driver = "${driver}" WHERE item_ID = "${id}"`;
+  const { id } = req.params;
+  const { item, quantity, destination, driver } = req.body;
+  const query = `UPDATE donations SET item = "${item}", quantity = "${quantity}", destination = "${destination}", driver = "${driver}" WHERE item_ID = "${id}"`;
 
-    connection.execute(query, (error) => {
-      if (error) {
-        return res
-          .status(500)
-          .send({ error: "Internal server error occurred" });
-      }
-      return res.status(200).send({ message: "Record updated successfully" });
-    });
-  }
+  connection.execute(query, (error) => {
+    if (error) {
+      return res.status(500).send({ error: "Internal server error occurred" });
+    }
+    return res.status(200).send({ message: "Record updated successfully" });
+  });
+  // if (!req.user) {
+  //   return res.status(401).send({ error: "Unauthorized user" });
+  // } else {
+
+  // }
 };
 //Deleting records
 export const deleteDonations = (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ error: "Unauthorized user" });
-  } else {
-    const { id } = req.params;
-    const query = `DELETE FROM donations WHERE item_ID = "${id}"`;
+  const { id } = req.params;
+  const query = `DELETE FROM donations WHERE item_ID = "${id}"`;
 
-    connection.execute(query, (error) => {
-      if (error) {
-        return res
-          .status(500)
-          .send({ error: "Internal server error occurred" });
-      }
-      return res.status(200).send({ message: "Record deleted successfully" });
-    });
-  }
+  connection.execute(query, (error) => {
+    if (error) {
+      return res.status(500).send({ error: "Internal server error occurred" });
+    }
+    return res.status(200).send({ message: "Record deleted successfully" });
+  });
+  // if (!req.user) {
+  //   return res.status(401).send({ error: "Unauthorized user" });
+  // } else {
+
+  // }
 };
 
 // SELECT user, Host FROM mysql. user
