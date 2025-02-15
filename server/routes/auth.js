@@ -5,7 +5,7 @@ import passport from "passport";
 
 const router = Router();
 
-router.post("/login", passport.authenticate("local"), verifyLogin);
+// router.post("/login", passport.authenticate("local"), verifyLogin);
 router.post("/registration", registerUser);
 
 export default router;
