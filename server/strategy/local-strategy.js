@@ -1,9 +1,9 @@
 import passport from "passport";
-import strategy from "passport-local";
+import { Strategy } from "passport-local";
 import connection from "../database.js";
 
 export default passport.use(
-  new strategy({ usernameField: "email" }, (username, password, done) => {
+  new Strategy({ usernameField: "email" }, (username, password, done) => {
     try {
       //search for user using their email
       connection.query(
@@ -31,6 +31,18 @@ export default passport.use(
     }
   })
 );
+
+passport.serializeUser((user, done) => {
+  process.nextTick(() => {
+    done(null, { id: user.id, email: user.email });
+  });
+});
+
+passport.deserializeUser((user, done) => {
+  process.nextTick(() => {
+    return done(null, user);
+  });
+});
 
 // passport.serializeUser((user, done) => {
 //   done(null, user.id);
